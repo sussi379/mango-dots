@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+SAVE_FILE="$HOME/.cache/current_wallpaper"
+if [ -f "$SAVE_FILE" ]; then
+    wallpaper=$(cat "$SAVE_FILE")
+    if [ -f "$wallpaper" ]; then
+        swaybg -i "$wallpaper" -m fill &
+    fi
+fi

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
+SAVE_FILE="$HOME/.cache/current_wallpaper"
+
+# Create cache directory if it doesn't exist
+mkdir -p "$(dirname "$SAVE_FILE")"
+
+# Get list of image files
+cd "$WALLPAPER_DIR" || exit
+choices=$(ls *.jpg *.png *.jpeg *.webp 2>/dev/null | sort)
+
+# Show rofi menu
+choice=$(echo "$choices" | rofi -dmenu -p "Select wallpaper:")
+
+if [ -n "$choice" ]; then
+    full_path="$WALLPAPER_DIR/$choice"
+    
+    # Set wallpaper (adjust for your compositor/WM)
+    # For sway/wayland with swaybg:
+    pkill swaybg 2>/dev/null
+    swaybg -i "$full_path" -m fill &
+    
+    # Or for feh (X11):
+    # feh --bg-fill "$full_path"
+    
+    # Save to cache file
+    echo "$full_path" > "$SAVE_FILE"
+fi

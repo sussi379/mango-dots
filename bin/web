@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+choice=$(echo -e "discord\nyoutube\ngoogle\ntiktok\ndeepseek\nchatgpt\ngemini\npinterest\ngithub" | rofi -dmenu -p "Open:")
+
+case $choice in
+    discord)   firefox-bin --new-window "https://discord.com/channels/@me" ;;
+    youtube)   firefox-bin --new-window "https://youtube.com" ;;
+    google)    firefox-bin --new-window "https://google.com" ;;
+    tiktok)    firefox-bin --new-window "https://tiktok.com" ;;
+    deepseek)  firefox-bin --new-window "https://chat.deepseek.com" ;;
+    chatgpt)   firefox-bin --new-window "https://chatgpt.com" ;;
+    gemini)    firefox-bin --new-window "https://gemini.google.com" ;;
+    pinterest) firefox-bin --new-window "https://pinterest.com" ;;
+    github)    firefox-bin --new-window "https://github.com" ;;
+esac

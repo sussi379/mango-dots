@@ -1,0 +1,9 @@
+#!/bin/bash
+
+choice=$(echo -e "Mango_Config\nWaybar_config\nWaybar_CSS" | rofi -dmenu -p "Open: ")
+
+case $choice in
+	Mango_Config) foot nano ~/.config/mango/config.conf ;;
+	Waybar_config) foot nano ~/.config/waybar/config.jsonc ;;
+	Waybar_CSS) foot nano ~/.config/waybar/style.css ;;
+esac
